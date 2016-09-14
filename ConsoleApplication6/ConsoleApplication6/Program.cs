@@ -21,13 +21,26 @@ namespace ConsoleApplication6
            // x = y = p_x;
         }
 
-        public Point(double p_x, double p_y)
+        private Point(double p_x, double p_y)
         {
             x = p_x;
             y = p_y;
+            double a, b;
+            double r = Math.Sqrt(a * a + b * b);
+            double ph = Math.Acos(a / r);
+
         }
 
+        public static Point Create1(double x, double y)
+        {
+            return new Point(x, y);
+        }
 
+        public static Point Create2(double x)
+        {
+            double y = 1 - x;
+            return new Point(x, y);
+        }
 
 
         public double M_x
@@ -92,8 +105,8 @@ namespace ConsoleApplication6
     {
         static void Main(string[] args)
         {
-            Point a = new Point(5);
-            Point b = new Point(2,3);
+            Point a = Point.Create2(0.6);
+            Point b = Point.Create1(1, 3);
             Point c = new Point();
 
             //a.M_x = -5;
