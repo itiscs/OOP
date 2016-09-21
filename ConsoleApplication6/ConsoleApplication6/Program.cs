@@ -25,10 +25,6 @@ namespace ConsoleApplication6
         {
             x = p_x;
             y = p_y;
-            double a, b;
-            double r = Math.Sqrt(a * a + b * b);
-            double ph = Math.Acos(a / r);
-
         }
 
         public static Point Create1(double x, double y)
