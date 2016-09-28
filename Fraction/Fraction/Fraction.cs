@@ -55,24 +55,74 @@ namespace Fraction
             Fraction c = new Fraction(); // c = a + b
             c.chis = a.chis * b.znam + a.znam * b.chis;
             c.znam = a.znam * b.znam;
+            c.Socr();
             return c;
         }
 
+        
         public static Fraction operator *(Fraction a, Fraction b)
         {
             Fraction c = new Fraction(); // c = a * b
             c.chis = a.chis * b.chis;
             c.znam = a.znam * b.znam;
+            c.Socr();
             return c;
         }
 
+        public static bool operator >(Fraction a, Fraction b)
+        {
+            return a.chis * b.znam > a.znam * b.chis;
+        }
+        public static bool operator <(Fraction a, Fraction b)
+        {
+            return a.chis * b.znam < a.znam * b.chis;
+        }
+        public static bool operator >=(Fraction a, Fraction b)
+        {
+            return a.chis * b.znam >= a.znam * b.chis;
+        }
+        public static bool operator <=(Fraction a, Fraction b)
+        {
+            return a.chis * b.znam <= a.znam * b.chis;
+        }
+
+        public static bool operator ==(Fraction a, Fraction b)
+        {
+            return a.chis * b.znam == a.znam * b.chis;
+        }
+
+        public static bool operator !=(Fraction a, Fraction b)
+        {
+            return a.chis * b.znam != a.znam * b.chis;
+        }
 
         public override string ToString()
         {
             return String.Format("{0}/{1}", chis, znam);
         }
 
+        public override bool Equals(object obj)
+        {
+            return this == (Fraction)obj;
+        }
 
+
+        public void Socr()
+        {
+            int a = chis;
+            int b = znam;
+
+            while (a!=0 && b!=0)
+            {
+                if (a > b)
+                    a = a % b;
+                else
+                    b = b % a;                 
+            }
+            a = a + b;
+            chis /= a;
+            znam /= a;
+        }
 
 
 
