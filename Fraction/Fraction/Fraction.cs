@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fraction
 {
-    class Fraction
+    class Fraction//:IComparable
     {
         private int chis;
         private int znam;
@@ -124,8 +124,13 @@ namespace Fraction
             znam /= a;
         }
 
-
-
-
+        public int CompareTo(object obj)
+        {
+            if (this < (Fraction)obj)
+                return -1;
+            if (this > (Fraction)obj)
+                return 1;
+            return 0;
+        }
     }
 }
