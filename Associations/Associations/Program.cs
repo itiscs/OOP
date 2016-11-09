@@ -16,7 +16,7 @@ namespace Associations
             items.Add(new Item() { Article = 3, Name = "Хлеб", Price = 20 });
             items.Add(new Item() { Article = 4, Name = "Спички", Price = 2 });
 
-            foreach (Item it in items)
+            foreach (Item it in items )
                 Console.WriteLine(it);
 
             List<Customer> custs = new List<Customer>();
@@ -24,6 +24,9 @@ namespace Associations
             custs.Add(new Customer() { Code = 2, FullName = "Покупатель 2", Phone = 222222, Priveleged = false });
             custs.Add(new Customer() { Code = 3, FullName = "Покупатель 3", Phone = 333333, Priveleged = true });
             custs.Add(new Customer() { Code = 4, FullName = "Покупатель 4", Phone = 444444, Priveleged = false });
+
+
+            //Console.WriteLine($"{items.Average(i=>i.Price)}");
 
             foreach (Customer cu in custs)
                 Console.WriteLine(cu);
@@ -39,13 +42,13 @@ namespace Associations
 
             for(int i = 0;i< k; i++)
             {
-                Console.WriteLine("Введите номер товара");
+                Console.WriteLine("Введите артикул товара");
                 int m = int.Parse(Console.ReadLine());
                 Console.WriteLine("Введите количество");
                 int kol = int.Parse(Console.ReadLine());
 
                 ord.Lines.Add(new OrderLine() {
-                    Quantity = kol, Item = items[m - 1] });
+                    Quantity = kol, Item = items.First(it=>it.Article== m) });
             }
 
             Console.WriteLine($"{ord}");
